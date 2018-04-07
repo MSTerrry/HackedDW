@@ -35,6 +35,7 @@ namespace DW.UI
             FullNameBox.Text = dto.FullName;
             TimeToDeliverPicker.Value = dto.TimeDeliver;
             AddressBox.Text = dto.ClientAddress;
+            listBox1.Items.Clear();
             foreach (var e in dto.WayPoints)
             {
                 listBox1.Items.Add(e);
