@@ -27,6 +27,7 @@ namespace DW.UI
                 WayPoints = listBox1.Items.OfType<WayPoint>().ToList(),
                 TimeDeliver = TimeToDeliverPicker.Value,
                 ClientAddress = AddressBox.Text,
+                TotalCost = CostUD.Value
             };
         }
         private void SetModelToUI(DeliveryRquestDto dto)
@@ -36,6 +37,7 @@ namespace DW.UI
             TimeToDeliverPicker.Value = dto.TimeDeliver;
             AddressBox.Text = dto.ClientAddress;
             listBox1.Items.Clear();
+            CostUD.Value = dto.TotalCost;
             foreach (var e in dto.WayPoints)
             {
                 listBox1.Items.Add(e);
@@ -72,10 +74,13 @@ namespace DW.UI
             {
                 listBox1.Items.Add(form.wp);                
             }
+            CostUD.Value += form.wp.TotalCost;            
         }
 
         private void Delete_Click(object sender, EventArgs e)
         {
+            var wp = (WayPoint)listBox1.SelectedItem;
+            CostUD.Value -= wp.TotalCost;
             listBox1.Items.Remove(listBox1.SelectedItem);
         }
 
@@ -84,6 +89,7 @@ namespace DW.UI
             var wp = listBox1.SelectedItem as WayPoint;
             if (wp == null)
                 return;
+            CostUD.Value -= wp.TotalCost;
             var form = new WayPointF(wp.Clone());
             var res = form.ShowDialog(this);
             if (res == DialogResult.OK)
@@ -92,6 +98,15 @@ namespace DW.UI
                 listBox1.Items.Remove(listBox1.SelectedItem);
                 listBox1.Items.Insert(si, form.wp);
             }
+            CostUD.Value += form.wp.TotalCost;
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex != -1)
+                Delete.Enabled = true;
+            else
+                Delete.Enabled = false;
         }
     }
 }

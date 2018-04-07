@@ -1,31 +1,32 @@
 <?xml version="1.0"?>
 <DeliveryRquestDto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Filled>2018-04-07T08:58:44</Filled>
+  <Filled>2018-04-07T16:53:25.5621993+05:00</Filled>
   <FullName>Тухбатшин Михаил</FullName>
   <WayPoints>
     <WayPoint>
-      <PlaceTitle>Пятерочка</PlaceTitle>
-      <Address>Де генина</Address>
-      <ShopType>Магазин</ShopType>
+      <PlaceTitle>Пятёрочка</PlaceTitle>
+      <Address>Вильгельма-Де-Генина</Address>
+      <ShopType>Другое</ShopType>
       <ProductsList>
         <Product>
           <Name>Молоко</Name>
           <Amount>1</Amount>
-          <Additions>литр</Additions>
+          <Additions>Литр</Additions>
           <Cost>40</Cost>
         </Product>
         <Product>
           <Name>Хлеб</Name>
-          <Amount>1</Amount>
-          <Additions>булка</Additions>
+          <Amount>2</Amount>
+          <Additions />
           <Cost>30</Cost>
         </Product>
       </ProductsList>
+      <TotalCost>70</TotalCost>
     </WayPoint>
     <WayPoint>
       <PlaceTitle>KFC</PlaceTitle>
-      <Address>Де генина</Address>
-      <ShopType>Кафе</ShopType>
+      <Address>На вайнера</Address>
+      <ShopType>Другое</ShopType>
       <ProductsList>
         <Product>
           <Name>Бигбургер</Name>
@@ -34,8 +35,10 @@
           <Cost>150</Cost>
         </Product>
       </ProductsList>
+      <TotalCost>150</TotalCost>
     </WayPoint>
   </WayPoints>
-  <TimeDeliver>2018-04-07T09:57:44</TimeDeliver>
+  <TimeDeliver>2018-04-07T17:53:25</TimeDeliver>
   <ClientAddress>Краснолесья</ClientAddress>
+  <TotalCost>220</TotalCost>
 </DeliveryRquestDto>

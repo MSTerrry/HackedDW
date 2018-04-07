@@ -25,12 +25,7 @@ namespace DW.UI
             Prod.Name = TitleBox.Text;
             Prod.Additions = AdditionBox.Text;
             Prod.Amount = int.Parse(AmountBox.Text);
-            Prod.Cost = float.Parse(CostBox.Text);
-        }
-
-        private void Cancel_Click(object sender, EventArgs e)
-        {
-
+            Prod.Cost = decimal.Parse(CostBox.Text);
         }
 
         private void ProductForm_Load(object sender, EventArgs e)

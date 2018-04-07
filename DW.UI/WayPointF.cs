@@ -26,7 +26,8 @@ namespace DW.UI
             if (wp.ShopType != null) wp.ShopType = DroppedBox1.SelectedItem.ToString();
             else wp.ShopType = "Другое";            
             wp.PlaceTitle = TitleBox.Text;
-            wp.ProductsList = ProductList.Items.OfType<Product>().ToList(); 
+            wp.ProductsList = ProductList.Items.OfType<Product>().ToList();
+            wp.TotalCost = CostUD.Value;
         }
 
         private void WayPointF_Load(object sender, EventArgs e)
@@ -34,6 +35,7 @@ namespace DW.UI
             AdressBox.Text = wp.Address;
             DroppedBox1.SelectedItem = wp.ShopType;
             TitleBox.Text = wp.PlaceTitle;
+            CostUD.Value = wp.TotalCost;
             if (wp.ProductsList != null)
             {
                 foreach (var r in wp.ProductsList)
@@ -45,16 +47,19 @@ namespace DW.UI
 
         private void Add_Click(object sender, EventArgs e)
         {
-            var product = new ProductForm(new Product());
+            var product = new ProductForm(new Product());            
             var res = product.ShowDialog(this);
             if (res == DialogResult.OK)
             {
                 ProductList.Items.Add(product.Prod);
             }
+            CostUD.Value += product.Prod.Cost; 
         }
 
         private void Delete_Click(object sender, EventArgs e)
         {
+            var prod = (Product)ProductList.SelectedItem;
+            CostUD.Value -= prod.Cost;
             ProductList.Items.Remove(ProductList.SelectedItem);
         }
 
@@ -63,6 +68,7 @@ namespace DW.UI
             var prod = ProductList.SelectedItem as Product;
             if (prod == null)
                 return;
+            CostUD.Value -= prod.Cost;
             var form = new ProductForm(prod.Clone());
             var res = form.ShowDialog(this);
             if (res == DialogResult.OK)
@@ -71,6 +77,15 @@ namespace DW.UI
                 ProductList.Items.Remove(ProductList.SelectedItem);
                 ProductList.Items.Insert(si,form.Prod);
             }
+            CostUD.Value += form.Prod.Cost;
+        }
+
+        private void ProductList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ProductList.SelectedIndex != -1)
+                Delete.Enabled = true;
+            else
+                Delete.Enabled = false;
         }
     }
 }

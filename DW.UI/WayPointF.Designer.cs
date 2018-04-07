@@ -40,6 +40,9 @@
             this.ProductList = new System.Windows.Forms.ListBox();
             this.Add = new System.Windows.Forms.Button();
             this.Delete = new System.Windows.Forms.Button();
+            this.CostUD = new System.Windows.Forms.NumericUpDown();
+            this.Cost = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.CostUD)).BeginInit();
             this.SuspendLayout();
             // 
             // Adress
@@ -135,6 +138,7 @@
             this.ProductList.Name = "ProductList";
             this.ProductList.Size = new System.Drawing.Size(596, 108);
             this.ProductList.TabIndex = 11;
+            this.ProductList.SelectedIndexChanged += new System.EventHandler(this.ProductList_SelectedIndexChanged);
             this.ProductList.DoubleClick += new System.EventHandler(this.ProductList_DoubleClick);
             // 
             // Add
@@ -149,6 +153,7 @@
             // 
             // Delete
             // 
+            this.Delete.Enabled = false;
             this.Delete.Location = new System.Drawing.Point(109, 236);
             this.Delete.Name = "Delete";
             this.Delete.Size = new System.Drawing.Size(75, 23);
@@ -157,11 +162,35 @@
             this.Delete.UseVisualStyleBackColor = true;
             this.Delete.Click += new System.EventHandler(this.Delete_Click);
             // 
+            // CostUD
+            // 
+            this.CostUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CostUD.Location = new System.Drawing.Point(549, 239);
+            this.CostUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.CostUD.Name = "CostUD";
+            this.CostUD.Size = new System.Drawing.Size(75, 20);
+            this.CostUD.TabIndex = 14;
+            // 
+            // Cost
+            // 
+            this.Cost.AutoSize = true;
+            this.Cost.Location = new System.Drawing.Point(438, 242);
+            this.Cost.Name = "Cost";
+            this.Cost.Size = new System.Drawing.Size(99, 13);
+            this.Cost.TabIndex = 15;
+            this.Cost.Text = "Общая стоимость";
+            // 
             // WayPointF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(646, 365);
+            this.Controls.Add(this.Cost);
+            this.Controls.Add(this.CostUD);
             this.Controls.Add(this.Delete);
             this.Controls.Add(this.Add);
             this.Controls.Add(this.ProductList);
@@ -177,6 +206,7 @@
             this.Name = "WayPointF";
             this.Text = "WayPoint";
             this.Load += new System.EventHandler(this.WayPointF_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.CostUD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,5 +226,7 @@
         private System.Windows.Forms.ListBox ProductList;
         private System.Windows.Forms.Button Add;
         private System.Windows.Forms.Button Delete;
+        private System.Windows.Forms.NumericUpDown CostUD;
+        private System.Windows.Forms.Label Cost;
     }
 }

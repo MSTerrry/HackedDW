@@ -42,11 +42,14 @@
             this.Delete = new System.Windows.Forms.Button();
             this.ClientAddress = new System.Windows.Forms.Label();
             this.AddressBox = new System.Windows.Forms.TextBox();
+            this.Cost = new System.Windows.Forms.Label();
+            this.CostUD = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.CostUD)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CustomFormat = "dd.MM.yyyy hh:mm:ss";
+            this.dateTimePicker1.CustomFormat = "dd.MM.yyyy HH:mm:ss";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(138, 15);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -111,7 +114,7 @@
             // 
             // TimeToDeliverPicker
             // 
-            this.TimeToDeliverPicker.CustomFormat = "dd.MM.yyyy hh:mm:ss";
+            this.TimeToDeliverPicker.CustomFormat = "dd.MM.yyyy HH:mm:ss";
             this.TimeToDeliverPicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.TimeToDeliverPicker.Location = new System.Drawing.Point(440, 15);
             this.TimeToDeliverPicker.Name = "TimeToDeliverPicker";
@@ -134,6 +137,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(663, 121);
             this.listBox1.TabIndex = 9;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
             // 
             // Add
@@ -148,6 +152,7 @@
             // 
             // Delete
             // 
+            this.Delete.Enabled = false;
             this.Delete.Location = new System.Drawing.Point(111, 224);
             this.Delete.Name = "Delete";
             this.Delete.Size = new System.Drawing.Size(75, 23);
@@ -172,11 +177,35 @@
             this.AddressBox.Size = new System.Drawing.Size(160, 20);
             this.AddressBox.TabIndex = 13;
             // 
+            // Cost
+            // 
+            this.Cost.AutoSize = true;
+            this.Cost.Location = new System.Drawing.Point(502, 230);
+            this.Cost.Name = "Cost";
+            this.Cost.Size = new System.Drawing.Size(99, 13);
+            this.Cost.TabIndex = 17;
+            this.Cost.Text = "Общая стоимость";
+            // 
+            // CostUD
+            // 
+            this.CostUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CostUD.Location = new System.Drawing.Point(613, 227);
+            this.CostUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.CostUD.Name = "CostUD";
+            this.CostUD.Size = new System.Drawing.Size(75, 20);
+            this.CostUD.TabIndex = 16;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 351);
+            this.Controls.Add(this.Cost);
+            this.Controls.Add(this.CostUD);
             this.Controls.Add(this.AddressBox);
             this.Controls.Add(this.ClientAddress);
             this.Controls.Add(this.Delete);
@@ -193,6 +222,7 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Name = "Form1";
             this.Text = "Delivery Wizard";
+            ((System.ComponentModel.ISupportInitialize)(this.CostUD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,6 +244,8 @@
         private System.Windows.Forms.Button Delete;
         private System.Windows.Forms.Label ClientAddress;
         private System.Windows.Forms.TextBox AddressBox;
+        private System.Windows.Forms.Label Cost;
+        private System.Windows.Forms.NumericUpDown CostUD;
     }
 }
 

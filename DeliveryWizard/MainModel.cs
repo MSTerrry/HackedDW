@@ -32,7 +32,12 @@ namespace DeliveryWizard
         /// <summary>
         /// Адрес клиента
         /// </summary>
-        public string ClientAddress { get; set; }        
+        public string ClientAddress { get; set; }
+
+        /// <summary>
+        /// Общая стоимость
+        /// </summary>
+        public decimal TotalCost { get; set; }
     }
 
     public class WayPoint
@@ -57,6 +62,11 @@ namespace DeliveryWizard
         /// </summary>
         public List<Product> ProductsList { get; set; }
 
+        /// <summary>
+        /// Общая стоимость
+        /// </summary>
+        public decimal TotalCost { get; set; }
+
         public override string ToString()
         {
             return PlaceTitle;
@@ -64,7 +74,7 @@ namespace DeliveryWizard
 
         public WayPoint Clone()
         {
-            return new WayPoint { PlaceTitle = PlaceTitle, Address = Address, ShopType = ShopType, ProductsList = ProductsList };
+            return new WayPoint { PlaceTitle = PlaceTitle, Address = Address, ShopType = ShopType, ProductsList = ProductsList, TotalCost = TotalCost };
         }
     }
 
@@ -88,7 +98,7 @@ namespace DeliveryWizard
         /// <summary>
         /// Цена
         /// </summary>
-        public float Cost { get; set; }
+        public decimal Cost { get; set; }
 
         public override string ToString()
         {
