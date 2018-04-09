@@ -114,7 +114,7 @@
             // 
             // TimeToDeliverPicker
             // 
-            this.TimeToDeliverPicker.CustomFormat = "dd.MM.yyyy HH:mm:ss";
+            this.TimeToDeliverPicker.CustomFormat = "";
             this.TimeToDeliverPicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.TimeToDeliverPicker.Location = new System.Drawing.Point(440, 15);
             this.TimeToDeliverPicker.Name = "TimeToDeliverPicker";
@@ -189,6 +189,7 @@
             // CostUD
             // 
             this.CostUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CostUD.DecimalPlaces = 2;
             this.CostUD.Location = new System.Drawing.Point(613, 227);
             this.CostUD.Maximum = new decimal(new int[] {
             1000000,

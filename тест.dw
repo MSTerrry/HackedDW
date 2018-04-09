@@ -6,27 +6,27 @@
     <WayPoint>
       <PlaceTitle>Пятёрочка</PlaceTitle>
       <Address>Вильгельма-Де-Генина</Address>
-      <ShopType>Другое</ShopType>
+      <ShopType>Магазин</ShopType>
       <ProductsList>
         <Product>
           <Name>Молоко</Name>
           <Amount>1</Amount>
           <Additions>Литр</Additions>
-          <Cost>40</Cost>
+          <Cost>40.1</Cost>
         </Product>
         <Product>
           <Name>Хлеб</Name>
           <Amount>2</Amount>
           <Additions />
-          <Cost>30</Cost>
+          <Cost>30.95</Cost>
         </Product>
       </ProductsList>
-      <TotalCost>70</TotalCost>
+      <TotalCost>72.00</TotalCost>
     </WayPoint>
     <WayPoint>
       <PlaceTitle>KFC</PlaceTitle>
       <Address>На вайнера</Address>
-      <ShopType>Другое</ShopType>
+      <ShopType>Кафе</ShopType>
       <ProductsList>
         <Product>
           <Name>Бигбургер</Name>
@@ -40,5 +40,5 @@
   </WayPoints>
   <TimeDeliver>2018-04-07T17:53:25</TimeDeliver>
   <ClientAddress>Краснолесья</ClientAddress>
-  <TotalCost>220</TotalCost>
+  <TotalCost>222.00</TotalCost>
 </DeliveryRquestDto>

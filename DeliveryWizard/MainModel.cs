@@ -88,7 +88,7 @@ namespace DeliveryWizard
         /// <summary>
         /// Количество
         /// </summary>
-        public int Amount { get; set; }
+        public float Amount { get; set; }
 
         /// <summary>
         /// Дополнительные сведения о продукте
@@ -98,11 +98,11 @@ namespace DeliveryWizard
         /// <summary>
         /// Цена
         /// </summary>
-        public decimal Cost { get; set; }
+        public float Cost { get; set; }
 
         public override string ToString()
         {
-            return string.Format("{0} {1} {2} {3} руб.", Name, Amount, Additions, Cost);
+            return string.Format("{0} {1:0.00} {2} {3} руб.", Name, Amount, Additions, Cost);
         }
 
         public Product Clone()

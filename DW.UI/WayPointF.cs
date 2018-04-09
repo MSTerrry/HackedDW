@@ -23,7 +23,7 @@ namespace DW.UI
         private void Save_Click(object sender, EventArgs e)
         {
             wp.Address = AdressBox.Text;
-            if (wp.ShopType != null) wp.ShopType = DroppedBox1.SelectedItem.ToString();
+            if (DroppedBox1.SelectedIndex != -1) wp.ShopType = DroppedBox1.SelectedItem.ToString();
             else wp.ShopType = "Другое";            
             wp.PlaceTitle = TitleBox.Text;
             wp.ProductsList = ProductList.Items.OfType<Product>().ToList();
@@ -53,22 +53,24 @@ namespace DW.UI
             {
                 ProductList.Items.Add(product.Prod);
             }
-            CostUD.Value += product.Prod.Cost; 
+            CostUD.Value += (decimal)product.Prod.Amount* (decimal)product.Prod.Cost;
+            Save.Enabled = true;
         }
 
         private void Delete_Click(object sender, EventArgs e)
         {
             var prod = (Product)ProductList.SelectedItem;
-            CostUD.Value -= prod.Cost;
+            CostUD.Value -= (decimal)prod.Cost;
             ProductList.Items.Remove(ProductList.SelectedItem);
+            if (ProductList.Items.Count == 0) Save.Enabled = false;
         }
 
         private void ProductList_DoubleClick(object sender, EventArgs e)
         {
             var prod = ProductList.SelectedItem as Product;
             if (prod == null)
-                return;
-            CostUD.Value -= prod.Cost;
+                return;                          
+            CostUD.Value -= (decimal)prod.Amount* (decimal)prod.Cost;
             var form = new ProductForm(prod.Clone());
             var res = form.ShowDialog(this);
             if (res == DialogResult.OK)
@@ -76,8 +78,8 @@ namespace DW.UI
                 var si = ProductList.SelectedIndex;
                 ProductList.Items.Remove(ProductList.SelectedItem);
                 ProductList.Items.Insert(si,form.Prod);
-            }
-            CostUD.Value += form.Prod.Cost;
+            }            
+            CostUD.Value += (decimal)form.Prod.Amount* (decimal)form.Prod.Cost;
         }
 
         private void ProductList_SelectedIndexChanged(object sender, EventArgs e)
@@ -86,6 +88,6 @@ namespace DW.UI
                 Delete.Enabled = true;
             else
                 Delete.Enabled = false;
-        }
+        }        
     }
 }

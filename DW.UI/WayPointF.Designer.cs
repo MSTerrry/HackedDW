@@ -96,6 +96,7 @@
             // 
             this.Save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Save.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.Save.Enabled = false;
             this.Save.Location = new System.Drawing.Point(478, 330);
             this.Save.Name = "Save";
             this.Save.Size = new System.Drawing.Size(75, 23);
@@ -165,6 +166,7 @@
             // CostUD
             // 
             this.CostUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CostUD.DecimalPlaces = 2;
             this.CostUD.Location = new System.Drawing.Point(549, 239);
             this.CostUD.Maximum = new decimal(new int[] {
             1000000,

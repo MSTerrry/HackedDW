@@ -16,6 +16,7 @@ namespace DW.UI
         public Form1()
         {
             InitializeComponent();
+            TimeToDeliverPicker.Value = TimeToDeliverPicker.Value.AddHours(1);
         }
 
         DeliveryRquestDto GetModelFromUI()

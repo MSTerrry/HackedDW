@@ -55,6 +55,7 @@
             this.TitleBox.Name = "TitleBox";
             this.TitleBox.Size = new System.Drawing.Size(232, 20);
             this.TitleBox.TabIndex = 1;
+            this.TitleBox.TextChanged += new System.EventHandler(this.TitleBox_TextChanged);
             // 
             // AmountBox
             // 
@@ -62,6 +63,8 @@
             this.AmountBox.Name = "AmountBox";
             this.AmountBox.Size = new System.Drawing.Size(232, 20);
             this.AmountBox.TabIndex = 3;
+            this.AmountBox.TextChanged += new System.EventHandler(this.TitleBox_TextChanged);
+            this.AmountBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmountBox_KeyPress);
             // 
             // Amount
             // 
@@ -94,6 +97,8 @@
             this.CostBox.Name = "CostBox";
             this.CostBox.Size = new System.Drawing.Size(232, 20);
             this.CostBox.TabIndex = 7;
+            this.CostBox.TextChanged += new System.EventHandler(this.TitleBox_TextChanged);
+            this.CostBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmountBox_KeyPress);
             // 
             // Cost
             // 
@@ -108,6 +113,7 @@
             // 
             this.OK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.OK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.OK.Enabled = false;
             this.OK.Location = new System.Drawing.Point(152, 134);
             this.OK.Name = "OK";
             this.OK.Size = new System.Drawing.Size(75, 23);
