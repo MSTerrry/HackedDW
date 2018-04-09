@@ -72,6 +72,7 @@
             // 
             // DroppedBox1
             // 
+            this.DroppedBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DroppedBox1.FormattingEnabled = true;
             this.DroppedBox1.Items.AddRange(new object[] {
             "Магазин",
