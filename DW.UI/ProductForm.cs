@@ -37,14 +37,14 @@ namespace DW.UI
         }
 
         private void AmountBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar != 8 && (e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 44 && e.KeyChar != 46)
+        {            
+            if (e.KeyChar != 8 && (e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 44)
                 e.Handled = true;            
         }
 
         private void TitleBox_TextChanged(object sender, EventArgs e)
         {
-            if (TitleBox != null && CostBox.Text != "0"  && AmountBox.Text != "0")
+            if (TitleBox != null && (CostBox.Text != "0" || CostBox.Text != ",")  && (AmountBox.Text != "0" || AmountBox.Text != ","))
                 OK.Enabled = true;
         }
     }
