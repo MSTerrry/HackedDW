@@ -17,13 +17,13 @@ namespace DW.UI
         public ProductForm(Product Prod)
         {
             this.Prod = Prod;
-            InitializeComponent();                     
+            InitializeComponent();
         }
 
         private void OK_Click(object sender, EventArgs e)
         {
             Prod.Name = TitleBox.Text;
-            Prod.Additions = AdditionBox.Text;            
+            Prod.Additions = AdditionBox.Text;
             Prod.Amount = float.Parse(AmountBox.Text);
             Prod.Cost = float.Parse(CostBox.Text);
         }
@@ -37,14 +37,22 @@ namespace DW.UI
         }
 
         private void AmountBox_KeyPress(object sender, KeyPressEventArgs e)
-        {            
-            if (e.KeyChar != 8 && (e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 44)
-                e.Handled = true;            
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !((e.KeyChar == ',') &&(((TextBox)sender).Text.IndexOf(",") == -1) &&(((TextBox)sender).Text.Length != 0)))
+            {
+                if (e.KeyChar != (char)Keys.Back)
+                {
+                    e.Handled = true;
+                }
+            }
         }
+
 
         private void TitleBox_TextChanged(object sender, EventArgs e)
         {
-            if (TitleBox != null && (CostBox.Text != "0" || CostBox.Text != ",")  && (AmountBox.Text != "0" || AmountBox.Text != ","))
+            if (CostBox.Text.StartsWith(",")) CostBox.Text = CostBox.Text.Substring(1);
+            if (AmountBox.Text.StartsWith(",")) AmountBox.Text = AmountBox.Text.Substring(1);
+            if (TitleBox != null && CostBox.Text != "0" && CostBox.Text != "," && AmountBox.Text != "0" && AmountBox.Text != ",")
                 OK.Enabled = true;
         }
     }
