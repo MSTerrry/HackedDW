@@ -21,7 +21,7 @@
           <Cost>30.95</Cost>
         </Product>
       </ProductsList>
-      <TotalCost>72.00</TotalCost>
+      <TotalCost>102.00</TotalCost>
     </WayPoint>
     <WayPoint>
       <PlaceTitle>KFC</PlaceTitle>
@@ -40,5 +40,5 @@
   </WayPoints>
   <TimeDeliver>2018-04-07T17:53:25</TimeDeliver>
   <ClientAddress>Краснолесья</ClientAddress>
-  <TotalCost>222.00</TotalCost>
+  <TotalCost>252.00</TotalCost>
 </DeliveryRquestDto>

@@ -27,6 +27,9 @@ namespace DeliveryWizard
             }
         }
 
-
+        public static DeliveryRquestDto LoadFromStream(Stream file)
+        {
+            return (DeliveryRquestDto)Xs.Deserialize(file);
+        }
     }
 }

@@ -1,0 +1,91 @@
+﻿@model DW.Web.Models.DbDeliveryRquest     
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+    <div>
+        <h4>DbDeliveryRquest</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Filled)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Filled)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FullName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FullName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TimeDeliver)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TimeDeliver)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ClientAddress)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ClientAddress)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TotalCost)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TotalCost)
+            </dd>
+    
+        </dl>
+    </div>
+
+      @foreach (var wp in Model.WayPoints)
+      {
+        <li>
+            <div>@wp.PlaceTitle, @wp.Address, @wp.ShopType</div>
+            <div>Список покупок в этом месте</div>
+            <table class="table table-bordered table-hover">
+                <tbody>
+                    <tr>
+                        <th>
+                            Название
+                        </th>
+                        <th>
+                            Количество
+                        </th>
+                        <th>
+                            Цена
+                        </th>
+                        <th>
+                            Дополнительная информация
+                        </th>
+                    </tr>
+                    @foreach (var shop in wp.ProductsList)
+                {
+                        <tr><td>@shop.Name</td><td>@shop.Amount</td><td>@shop.Cost</td><td>@shop.Additions</td></tr>
+                    }
+                </tbody>
+            </table>
+            <h5>Общая стоимость покупок в этом месте @wp.TotalCost</h5>
+        </li>
+      }
+    <div><h4>Общая стоимость продуктов @Model.TotalCost <h4></div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,41 @@
+﻿@model DeliveryWizard.DeliveryRquestDto
+
+@{
+    ViewBag.Title = "Upload";
+}
+
+<h2>Загруженная поездка</h2>
+
+ФИО клиента @Model.FullName
+<div>Адрес клиента @Model.ClientAddress</div>
+<div>Время заказа @Model.Filled Время доставки @Model.TimeDeliver </div>
+
+@foreach (var wp in Model.WayPoints)
+{    
+    <li><div>@wp.PlaceTitle, @wp.Address, @wp.ShopType</div>
+    <div>Список покупок в этом месте</div>
+    <table class="table table-bordered table-hover">
+        <tbody>
+    <tr>
+        <th>
+            Название
+        </th>
+        <th>
+            Количество
+        </th>
+        <th>
+            Цена
+        </th>
+        <th>
+            Дополнительная информация
+        </th>
+    </tr>
+    @foreach (var shop in wp.ProductsList)
+    {
+        <tr><td>@shop.Name</td><td>@shop.Amount</td><td>@shop.Cost</td><td>@shop.Additions</td></tr>
+    }    
+        </tbody>       
+    </table>
+  <h5>Общая стоимость покупок в этом месте @wp.TotalCost</h5></li>
+}
+<div><h4>Общая стоимость продуктов @Model.TotalCost <h4></div>
