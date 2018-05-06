@@ -96,7 +96,7 @@ namespace DW.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DbDeliveryRquest dbDeliveryRquest = db.DeliveryRequest.Find(id);
+            DbDeliveryRquest dbDeliveryRquest = db.DeliveryRequest.Find(id);            
             if (dbDeliveryRquest == null)
             {
                 return HttpNotFound();
@@ -110,6 +110,7 @@ namespace DW.Web.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             DbDeliveryRquest dbDeliveryRquest = db.DeliveryRequest.Find(id);
+            dbDeliveryRquest.WayPoints.Clear();                                    
             db.DeliveryRequest.Remove(dbDeliveryRquest);
             db.SaveChanges();
             return RedirectToAction("Index");

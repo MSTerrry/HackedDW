@@ -58,7 +58,7 @@ namespace DW.Web.Models
         /// <summary>
         /// Описание пути
         /// </summary>
-        public Collection<DbWayPoint> WayPoints { get; set; }
+        public virtual Collection<DbWayPoint> WayPoints { get; set; }
 
         /// <summary>
         /// Время доставки
@@ -74,6 +74,8 @@ namespace DW.Web.Models
         /// Общая стоимость
         /// </summary>
         public decimal TotalCost { get; set; }
+
+        
     }
 
     public class DbWayPoint
@@ -99,7 +101,7 @@ namespace DW.Web.Models
         /// <summary>
         /// Список продуктов к покупке в этом месте
         /// </summary>
-        public Collection<DbProduct> ProductsList { get; set; }
+        public virtual Collection<DbProduct> ProductsList { get; set; }
 
         /// <summary>
         /// Общая стоимость

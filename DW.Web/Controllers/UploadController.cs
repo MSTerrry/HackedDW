@@ -35,7 +35,7 @@ namespace DW.Web.Controllers
                         FullName = dto.FullName
                     };
 
-                    row.WayPoints = new Collection<DbWayPoint>();                    
+                    row.WayPoints = new Collection<DbWayPoint>();
                     
                     foreach (var wpDto in dto.WayPoints)
                     {                                               
@@ -43,8 +43,8 @@ namespace DW.Web.Controllers
                         {
                             Address = wpDto.Address,
                             PlaceTitle = wpDto.PlaceTitle,
-                            ShopType = wpDto.ShopType,                                                         
-                        });
+                            ShopType = wpDto.ShopType,                                                        
+                        });                        
                         var Pl = new Collection<DbProduct>();
                         foreach (var product in wpDto.ProductsList)
                         {
