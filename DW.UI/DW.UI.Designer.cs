@@ -223,6 +223,7 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Name = "Form1";
             this.Text = "Delivery Wizard";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CostUD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

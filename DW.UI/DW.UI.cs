@@ -109,5 +109,20 @@ namespace DW.UI
             else
                 Delete.Enabled = false;
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            var lv = new LicenceValidator();
+            if (!lv.HasLicense)
+            {
+                MessageBox.Show("Лицензия не найдена.");
+                Application.Exit();
+            }
+            if (!lv.IsValid)
+            {
+                MessageBox.Show("Лицензия просрочена.");
+                Application.Exit();
+            }
+        }
     }
 }

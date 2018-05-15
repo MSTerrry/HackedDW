@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DW.Web.Models;
+using System.Data.SqlClient;
 
 namespace DW.Web.Controllers
 {
@@ -109,10 +110,30 @@ namespace DW.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DbDeliveryRquest dbDeliveryRquest = db.DeliveryRequest.Find(id);
-            dbDeliveryRquest.WayPoints.Clear();                                    
-            db.DeliveryRequest.Remove(dbDeliveryRquest);
-            db.SaveChanges();
+            string connection = @"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=D:\универ\2 курс\c#\anytask\DeliveryWizard\DW.Web\App_Data\aspnet-DW.Web-20180422100716.mdf;Initial Catalog=aspnet-DW.Web-20180422100716;Integrated Security=True";            
+            using (SqlConnection sqlcon = new SqlConnection(connection))
+            {
+                sqlcon.Open();
+                string querryWPId = "SELECT Id FROM DbWayPoints WHERE DbDeliveryRquest_Id = '" + id + "'";
+                string querryDelete = "DELETE FROM DbWayPoints WHERE DbDeliveryRquest_Id = '" + id + "'";
+                SqlDataAdapter adapter = new SqlDataAdapter(querryWPId, connection);
+
+                DataTable dtbl = new DataTable();
+                adapter.Fill(dtbl);
+                for (int i = 0; i < dtbl.Rows.Count; i++)
+                {
+                    var prodId = Convert.ToInt32(dtbl.Rows[i][0].ToString());
+                    string querryDeletePr = "DELETE FROM DbProducts WHERE DbWayPoint_Id = '" + prodId + "'";
+                    SqlCommand deletePrCmd = new SqlCommand(querryDeletePr, sqlcon);
+                    deletePrCmd.ExecuteNonQuery();
+                }
+                SqlCommand deleteCmd = new SqlCommand(querryDelete, sqlcon);
+                deleteCmd.ExecuteNonQuery();
+
+                string querryDeleteDto = "DELETE FROM DbDeliveryRquests WHERE Id = '" + id + "'";
+                SqlCommand deleteDtoCmd = new SqlCommand(querryDeleteDto, sqlcon);
+                deleteDtoCmd.ExecuteNonQuery();
+            }                   
             return RedirectToAction("Index");
         }
 
